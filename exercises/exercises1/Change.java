@@ -16,6 +16,21 @@ public class Change {
 		// should be given in exchange for those pennies, so as to
 		// minimize the number of coins (see the videos)
 		//
+		ArgsProcessor ap = new ArgsProcessor(args);
+		int numPennies = ap.nextInt("Starting number of pennies?");
+		int numDollars = numPennies / 100;
+		int numCents = numPennies % 100;
+		int numQuarters = numCents / 25;
+		numCents = numCents % 25;
+		int numDimes = numCents / 10;
+		numCents = numCents % 10;
+		int numNickels = numCents / 5;
+		numCents = numCents % 5;
+		System.out.println("For " + numPennies + " pennies: " + numDollars + " dollars, " 
++ numQuarters + " quarters, " + numDimes + " dimes, " + numNickels + 	" nickels, " + numCents + " pennies");
+		
+				
+		
 	}
 
 }
