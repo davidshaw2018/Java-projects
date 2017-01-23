@@ -31,13 +31,13 @@ public class Nutrition {
 				  + protein + " grams of protein = " + proteinCal + " Calories. \n\n"
 				   + "This food has " + statedCal + " available Calories. \n"
 				   + "With " + missingCal + " unavailable Calories, \n" + "this food has "
-				   + fiber + "grams of fiber. \n\n"
+				   + fiber + " grams of fiber. \n\n"
 				   + "Approximately " + carbPercent + "% of your food is carbohydrates,\n"
 				   + fatsPercent + "% of your food is fats,\n"
 				   + proteinPercent + "% of your food is protein.\n\n"
 				   + "Is this food acceptable for a low-carb diet? " + lowCarb
 				   + "\n" + "Is this food acceptable for a low-fat diet? " +lowFat 
-				   + "\n" + "By a coin flip, should you eat " + name + "?" + heads
+				   + "\n" + "By a coin flip, should you eat " + name + "? " + heads
 				   
 				  );
 				
