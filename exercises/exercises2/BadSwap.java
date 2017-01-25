@@ -25,10 +25,10 @@ public class BadSwap {
 		//   Note that the bad swap executes only if x>y
 		//
 		// Your answer:
-		//
-		//
-		//
-		//
+		// If x>y, the if statement the assigns the inputed value of y
+		// to x. The next line then assigns a new value of y equal to
+		// x, but in this case x is now the inputed value of y. If I input 
+		// x=6 and y=4, then the if statement assigns x=4 and y=x=4. 
 		//
 		//
 
