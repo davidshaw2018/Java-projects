@@ -19,7 +19,23 @@ public class Shuffle {
 		// shuffled array contains the same strings, but in a randomized
 		// order.
 		//
+		String[] shuffled = new String[original.length];
+		
+		for (int i = original.length - 1; i >= 0; --i)
+		{int c = (int)(Math.random() * (i + 1));
+		shuffled[i] = original[c];
+		System.out.println(c);
+			
+			for (int j = c; j < shuffled.length - 1; ++j)
+			{original[j] = original[j+1];
+			
+		}
+		
 
-	}
+		}
+		for (int i = 0; i < original.length; ++i)
+			
+		{System.out.println(shuffled[i]);
+		
 	
-}
+}}}
