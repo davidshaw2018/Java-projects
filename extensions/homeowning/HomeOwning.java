@@ -15,7 +15,7 @@ public class HomeOwning {
 	int yearlyRent = 12 * monthlyRent;
 	double weeklyRent = (double)Math.round(100 * yearlyRent / 52) / 100;
 	double yearlyInterest = (double)Math.round(36500 * dailyInterest) / 100;
-	double weeklyInterest = (double)Math.round(100 * yearlyInterest / 52) / 100;
+	double weeklyInterest = (double)Math.round(100 * dailyInterest * 7) / 100;
 	boolean which = yearlyRent > yearlyInterest;
 	String whatDo = "";
 	

@@ -15,6 +15,7 @@ public class Dice {
 		int j = 0;
 		int numSame = 0;
 		int[] diceSum = new int[5 * numDice + 1];
+		
 
 		while (j < numThrows) {
 			int firstRoll = -1;
@@ -64,11 +65,12 @@ public class Dice {
 
 
 		}
+		System.out.println("");
 		for (int a = 0; a < diceSum.length; ++a) {
 			System.out.println("The number of " + (a + numDice) + "s is " + diceSum[a]);
 		}
-		double percentSame = Math.round(1000 * (double) (numSame) / (double) numThrows) / 10;
-
+		double percentSame = (double)Math.round(10000 * (double) (numSame) / (double) numThrows) / 100;
+		System.out.println("");
 		System.out.println("The number of identical rolls is " + numSame);
 		System.out.println("The percentage of identical rolls is " + percentSame);
 	}

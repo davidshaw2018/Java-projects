@@ -87,9 +87,11 @@ public class Filters {
 	//originally provided color. returns an array of integers [r, g ,b].
 	// USED IN: blackWhite
 	public static Color blackAndWhite(Color c) {
-		return new Color((c.getRed() > 127) ? 255 : 0, (c.getGreen() > 127) ? 255 : 0,
-				(c.getBlue() > 127) ? 255 : 0);   
-	}
+		if ((c.getRed() + c.getGreen() + c.getBlue()) > 381) {
+			return Color.black;}
+		else {return Color.white;}
+		}
+	
 
 	//This method combines two images by choosing for each location the brighter 
 	//pixel in the same location from the two source images.
