@@ -1,4 +1,4 @@
-package lab3;
+package minesweeper;
 
 import cse131.ArgsProcessor;
 
