@@ -14,55 +14,62 @@ public class Dice {
 		int[] diceThrown = new int[numDice];
 		int j = 0;
 		int numSame = 0;
-		int[] diceSum = new int[5 * numDice];
-		
+		int[] diceSum = new int[5 * numDice + 1];
 
 		while (j < numThrows) {
-			int firstRoll=-1;
+			int firstRoll = -1;
 			boolean allSame = true;
 			int sum = 0;
 			for (int i = 0; i < numDice; ++i) {
 				int v = 0;
-				if ((6 * Math.random()) < 1) {v = 1;}
-				else if ((6 * Math.random()) < 2) {v = 2;}
-				else if ((6 * Math.random()) < 3) {v = 3;} 
-				else if ((6 * Math.random()) < 4) {v = 4;}
-				else if ((6 * Math.random()) < 5) {v = 5;}
-				else {v = 6;}
-				diceThrown[i] = v;
-				if(i == 0){
-					firstRoll = v;
+				if ((6 * Math.random()) < 1) {
+					v = 1;
+				} else if ((6 * Math.random()) < 2) {
+					v = 2;
+				} else if ((6 * Math.random()) < 3) {
+					v = 3;
+				} else if ((6 * Math.random()) < 4) {
+					v = 4;
+				} else if ((6 * Math.random()) < 5) {
+					v = 5;
+				} else {
+					v = 6;
 				}
-				else{
-					if(v != firstRoll){
+				diceThrown[i] = v;
+				if (i == 0) {
+					firstRoll = v;
+				} else {
+					if (v != firstRoll) {
 						allSame = false;
 					}
 				}
 				sum = sum + diceThrown[i];
 				System.out.print(diceThrown[i] + "    ");
-				
-				
-				
+
 			}
 			System.out.print(sum + " ");
-			
-			if(allSame){
+
+			if (allSame) {
 				numSame++;
-				System.out.print("all same");
+				System.out.print("all same ");
 			}
 			j = j + 1;
 			System.out.println("");
 			for (int k = numDice; k <= 6 * numDice; ++k) {
 				if (k == sum) {
-				diceSum[k - numDice] = diceSum[k - numDice] + 1;
+					diceSum[k - numDice] = diceSum[k - numDice] + 1;
+				}
+
 			}
 
 
-		} 	
-		double percentSame = 100 * (double)(numSame) / (double)numThrows;
+		}
+		for (int a = 0; a < diceSum.length; ++a) {
+			System.out.println("The number of " + (a + numDice) + "s is " + diceSum[a]);
+		}
+		double percentSame = Math.round(1000 * (double) (numSame) / (double) numThrows) / 10;
+
 		System.out.println("The number of identical rolls is " + numSame);
 		System.out.println("The percentage of identical rolls is " + percentSame);
-
 	}
 }
-
