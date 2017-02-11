@@ -3,15 +3,15 @@ package bankinterest;
 public class BankInterest {
 
 	public static void main(String[] args) {
-		double wealth = 4000;
+		double wealth = 4000.00;
 
 System.out.println("Day       Type          Amount   Current Wealth");
 
 		for (int i = 0; i < 30; ++i) {
 			String type = "Deposit";
-			double change = -100;
+			double change = -100.00;
 			if (Math.random() < .5) {
-				change = 200.5;
+				change = 200.50;
 			}
 			else {
 				type = "Withdrawal";
