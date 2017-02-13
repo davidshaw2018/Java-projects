@@ -17,8 +17,7 @@ public class Birthday {
 		int sameBirthdays = 0;
 		int[] monthBirthdays = new int[12];
 		int[] dayBirthdays = new int[31];
-		System.out.println("Calendar:");
-		System.out.println();
+		System.out.println("Calendar:\n");
 		for (int m = 0; m < 12; ++m) {
 			for (int d = 0; d < 31; ++d) {
 				if (calendar[m][d] > 1) {
@@ -30,14 +29,11 @@ public class Birthday {
 			}
 				System.out.println();
 		}
-		System.out.println();
-		System.out.println("Birthdays per month: ");
+		System.out.println("\nBirthdays per month: ");
 		for (int m = 0; m < 12; ++m) {
 			System.out.print(monthBirthdays[m] + " ");
 		}
-		System.out.println();
-		System.out.println();
-		System.out.println("Birthdays by day: ");
+		System.out.println("\n\nBirthdays by day: ");
 		for (int d = 0; d < 31; ++d) {
 			System.out.print(dayBirthdays[d] + " ");
 		}
@@ -45,19 +41,14 @@ public class Birthday {
 		double[] dayPercent = new double[31];
 		double monthSum = 0;
 		double daySum = 0;
-		System.out.println();
-		System.out.println();
-		System.out.print("Percent of birthdays by month: ");
-		System.out.println();
+		System.out.print("\n\nPercent of birthdays by month: \n");
 		
 		for (int i = 0; i < monthPercent.length; ++i) {
 			monthPercent[i] = (double)Math.round(1000 * (double)monthBirthdays[i] / N) / 10;
 			monthSum = monthSum + monthPercent[i];
 			System.out.print(monthPercent[i] + "%  ");
 		}
-		System.out.println();
-		System.out.println();
-		System.out.println("Percent of birthdays by day: ");
+		System.out.println("\n\nPercent of birthdays by day: ");
 		
 		for (int i = 0; i < dayPercent.length; ++i) {
 			dayPercent[i] = (double)Math.round(1000 * (double)dayBirthdays[i] / N) / 10;
@@ -68,8 +59,8 @@ public class Birthday {
 		double monthAverage = (double)Math.round(10 * monthSum / 12) / 10;
 		double dayAverage = (double)Math.round(10 * daySum / 31) / 10;
 		double samePercent = (double)Math.round(10 * (double)sameBirthdays / N) / 10;
-		System.out.println();
-		System.out.println("Monthly percent average: " + monthAverage + "%");
+		
+		System.out.println("\nMonthly percent average: " + monthAverage + "%");
 		System.out.println("Daily percent average: " + dayAverage + "%");
 		System.out.println("Percent of people with same birthday: " + samePercent + "%");
 	}
