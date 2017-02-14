@@ -28,8 +28,11 @@ public class Primes {
 
 
 		}
+		
+		
+		}
 
 
 	}
 
-}
+
