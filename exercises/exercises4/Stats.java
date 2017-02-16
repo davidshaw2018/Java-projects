@@ -8,6 +8,29 @@ public class Stats {
 	public static void main(String[] args) {
 		// prompt the user for the file to be used for this run
 		ArgsProcessor.useStdInput("datafiles/average");
+		
+		double sum = 0;
+		int count = 0;
+		double max = Double.MIN_VALUE;
+		double min = Double.MAX_VALUE;
+		
+		while (!StdIn.isEmpty()) {
+			double d = StdIn.readDouble();
+			sum = sum + d;
+			count = count + 1;
+			if (d > max) {
+				max = d;
+			}
+			if (d < min) {
+				min = d;
+			}
+		}
+		
+		System.out.println("sum = " + sum);
+		System.out.println("count = " + count);
+		System.out.println("average = " + sum / count);
+		System.out.println("max = " + max);
+		System.out.println("min = " + min);
 
 		//
 		//  Read in the data from the opened file, computing the

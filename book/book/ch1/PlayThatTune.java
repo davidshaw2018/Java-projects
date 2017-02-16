@@ -1,4 +1,7 @@
 package book.ch1;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 import cse131.ArgsProcessor;
 import sedgewick.*;
 /*************************************************************************
@@ -32,9 +35,9 @@ import sedgewick.*;
 
 public class PlayThatTune {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
     	
-    	ArgsProcessor.useStdInput("music");
+    	System.setIn(new FileInputStream("music/National_Anthem.txt"));
 
         // repeat as long as there are more integers to read in
         while (!StdIn.isEmpty()) {
