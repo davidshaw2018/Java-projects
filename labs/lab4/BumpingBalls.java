@@ -25,8 +25,6 @@ public class BumpingBalls {
 			vely[x] = .1 * Math.random() - .05;
 		}
 
-
-
 		while(true) {
 			StdDraw.setPenColor(StdDraw.CYAN);
 			StdDraw.filledSquare(1.0, 1.0, 1.0);
@@ -53,15 +51,8 @@ public class BumpingBalls {
 				posy[i] = posy[i] + vely[i];
 				StdDraw.setPenColor(StdDraw.BLACK);
 				StdDraw.filledCircle(posx[i], posy[i], radius);
-				
 			}
 			StdDraw.show(10);
-
-
 		}
-
-
-
-
 	}
 }
