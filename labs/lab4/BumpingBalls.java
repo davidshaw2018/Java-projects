@@ -12,11 +12,13 @@ public class BumpingBalls {
 
 		ArgsProcessor ap = new ArgsProcessor(args);
 		int N = ap.nextInt("How many balls?");
+		int iterations = ap.nextInt("How many iterations should we run?");
 		double[] posx = new double[N];
 		double[] velx = new double[N];
 		double[] posy = new double[N];
 		double[] vely = new double[N];
 		double radius = .05;
+		int a = 0;
 
 		for (int x = 0; x < N; ++x) {
 			posx[x] = 2 * Math.random();
@@ -25,7 +27,7 @@ public class BumpingBalls {
 			vely[x] = .1 * Math.random() - .05;
 		}
 
-		while(true) {
+		while(a < iterations) {
 			StdDraw.setPenColor(StdDraw.CYAN);
 			StdDraw.filledSquare(1.0, 1.0, 1.0);
 			for (int i = 0; i < N; ++i) {
@@ -53,6 +55,7 @@ public class BumpingBalls {
 				StdDraw.filledCircle(posx[i], posy[i], radius);
 			}
 			StdDraw.show(10);
+			a = a + 1;
 		}
 	}
 }
