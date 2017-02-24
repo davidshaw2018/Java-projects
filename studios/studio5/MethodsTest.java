@@ -22,8 +22,8 @@ public class MethodsTest {
 	
 	@Test
 	public void thisTestShouldFail() {
-		assertEquals(1, Methods.mpy(0,3));
-		assertEquals(1, Methods.mpy(2, 5));
+		assertEquals(0, Methods.mpy(0,3));
+		assertEquals(10, Methods.mpy(2, 5));
 	}
 	
 	@Test
@@ -45,6 +45,11 @@ public class MethodsTest {
 	@Test
 	public void testAverage() {
 		assertEquals(0.5, Methods.average(new double[] { 0, 1 }), 0.1);
+	}
+	
+	@Test
+	public void testSubtraction() {
+		assertEquals(5, Methods.subtraction(10, 5));
 	}
 
 }
