@@ -10,10 +10,13 @@ public class Recipe {
 		//  to type in the abstractions
 		//  you found in the recipe story
 		// 
+		// Heat(ingredient, temperature, time)
+		// Mix(ingredient 1, ingredient 2)
 
 		//
 		// Use those abstractions in comments or code to 
 		//   express the recipe
+		//
 		//
 	}
 

@@ -13,15 +13,32 @@ public class StringMethods {
 	//
 	
 	public static String selfConcat(String s) {
-		return s + s;
+		return nConcat(s, 2);
 	}
+	
+	public static String nConcat(String s, int n) {
+		String total = "";
+		
+		for (int i = 0; i < n; ++i) {
+			total = total + s;
+		}
+		return total;
+	}
+	
+	
+			
+		
+		
+	
+	
+	
 	
 	public static void main(String[] args) {
 		
 		//
 		// Testing the methods
 		//
-		System.out.println(selfConcat("echo"));
+		System.out.println(selfConcat("hello"));
 	}
 
 }
