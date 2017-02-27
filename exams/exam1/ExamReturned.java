@@ -1,5 +1,7 @@
 package exam1;
 
+public class ExamReturned {
+
 /*  * __ [-1] Needed to fix a compilation problem in the codepublic class ExamTemplate {
 
 
