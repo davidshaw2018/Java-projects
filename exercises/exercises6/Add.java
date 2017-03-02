@@ -8,15 +8,19 @@ public class Add {
 	//   add(x,y) = add(x+1,y-1), otherwise
 	//
 	public static int add(int x, int y) {
-		return 0;  // FIXME
+		if (y == 0) {
+			return x;
+		}
+		else return add(x+1, y-1);
 	}
+	
 	
 	//
 	// Answer in comments below:
 	//
 	//  For what values of x and y does your method operate correctly?
 	//
-	//  Your answer:
+	//  Your answer: for y>=0
 	//
 	//  Can you complete the following method
 	//   so that it calls add but returns the correct answer
@@ -27,7 +31,7 @@ public class Add {
 		if (y >= 0)
 			return add(x,y);
 		else
-			return 0; // FIXME
+			return -add(-x,-y); 
 	}
 
 }

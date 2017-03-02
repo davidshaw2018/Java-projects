@@ -6,6 +6,7 @@ import org.junit.Test;
 
 public class Tests {
 
+	
 	@Test
 	public void testFactorial() {
 		assertEquals(1, Methods.fact(0));
