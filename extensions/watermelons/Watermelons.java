@@ -3,7 +3,7 @@ package watermelons;
 import java.util.Arrays;
 
 public class Watermelons {
-	
+
 	/**
 	 * Computes the sum of each distinct pair of entries in the incoming array.
 	 * A given pair of entries has its sum computed only once.  So if you
@@ -15,10 +15,24 @@ public class Watermelons {
 	 * @return an array containing the sums of pairs as described above
 	 */
 	public static int[] allPairSums(int[] nums) {
-		int[] ans = new int[] { 0 };  // FIXME compute ans as the result you want
+		int ansLength = 0;
+		int ansIncrease = 1;
+		for (int i = 0; i < nums.length-1; ++i) {
+			ansLength = ansLength + ansIncrease;
+			ansIncrease += 1;
+		}
+		int[] ans = new int[ansLength];
+		int i = 0;
+		for (int j = 0; j < nums.length; ++j) {
+			for (int k = j+1; k < nums.length; ++k) {
+				ans[i] = nums[j] + nums[k];
+				i += 1;
+			}
+		}
+
 		return ans;
 	}
-	
+
 	/**
 	 * The method below must COMPUTE and return a solution as described
 	 * on the web page for this extension.  
@@ -32,9 +46,34 @@ public class Watermelons {
 	 * @return
 	 */
 	public static int[] getSolution(int[] pairSums) {
-		return new int[] { 0 };
+		int[] ans = new int[5];
+		Arrays.sort(pairSums);
+		ans[1] = pairSums[0];
+		ans[4] = pairSums[9];
+		while (!sameIntArrays(pairSums, allPairSums(ans))) {
+
+			ans[0] += 1;
+			ans[1] -= 1;
+			if (ans[0] == pairSums[0]) {
+				ans[0] = 0;
+				ans[1] = pairSums[0];
+			}
+
+			ans[3] += 1;
+			ans[4] -= 1;
+			if (ans[3] == pairSums[0]) {
+				ans[3] = 0;
+				ans[4] = pairSums[0];
+			}
+
+			ans[2] += 1;
+			if (ans[2] == pairSums[1]) {
+				ans[2] = 0;
+			}
+		}
+		return ans;
 	}
-	
+
 	/**
 	 * Compare two arrays for equality.  They must first be
 	 * sorted, so that Arrays.equals can do its thing element
@@ -56,5 +95,13 @@ public class Watermelons {
 		return Arrays.equals(cone, ctwo);
 	}
 
-
+	public static void main(String[] args) {
+		int[] melons = {10,20,30,40,40};
+		int[] sums = allPairSums(melons);
+		Arrays.sort(sums);
+		for (int i = 0; i < sums.length; ++i) {
+			System.out.print(sums[i] + " ");
+		}
+		System.out.println();
+	}
 }
