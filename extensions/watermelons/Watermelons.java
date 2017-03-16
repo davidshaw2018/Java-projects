@@ -61,9 +61,9 @@ public class Watermelons {
 
 			ans[3] += 1;
 			ans[4] -= 1;
-			if (ans[3] == pairSums[0]) {
+			if (ans[3] == pairSums[9]) {
 				ans[3] = 0;
-				ans[4] = pairSums[0];
+				ans[4] = pairSums[9];
 			}
 
 			ans[2] += 1;

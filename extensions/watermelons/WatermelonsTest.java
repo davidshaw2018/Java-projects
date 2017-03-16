@@ -171,9 +171,9 @@ public class WatermelonsTest {
 	public void testGetSolution(){
 		int[] a = genSolution();
 		testPuzzleSolution(Watermelons.getSolution(allPairSums(a)), a);
-//		System.out.println(Arrays.toString(a));
-//		System.out.println(Arrays.toString(Watermelons.getSolution(allPairSums(a))));
-//		assertTrue(Watermelons.sameIntArrays(a, Watermelons.getSolution(allPairSums(a))));
+		System.out.println(Arrays.toString(a));
+		System.out.println(Arrays.toString(Watermelons.getSolution(allPairSums(a))));
+		assertTrue(Watermelons.sameIntArrays(a, Watermelons.getSolution(allPairSums(a))));
 	}
 	
 }

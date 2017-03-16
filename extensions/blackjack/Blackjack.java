@@ -27,6 +27,7 @@ public class Blackjack {
 			}
 
 			System.out.println("Round " + (i + 1) + ": Dealer shows " + cards[0][0] + "\n");
+			
 			for (int j = 1; j < p; ++j) {
 				System.out.println("Player " + j + " has " + scores[j]);
 				if (scores[j] == 21) {
