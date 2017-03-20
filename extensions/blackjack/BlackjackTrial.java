@@ -2,7 +2,7 @@ package blackjack;
 
 import cse131.ArgsProcessor;
 
-public class Blackjack {
+public class BlackjackTrial {
 
 	public static void main(String[] args) {
 		ArgsProcessor ap = new ArgsProcessor(args);

@@ -29,12 +29,8 @@ public class Lines {
 		if (y2<y1) {
 			yInterval = -.5*radius;
 		}
+		StdDraw.pause(20);
 		drawLine(x1+xInterval, y1+yInterval, x2, y2);
-		
-		//StdDraw.point((x1+x2)/2, (y1+y2)/2);
-		//drawLine(x1, y1, (x1+x2)/2 - .5*radius, (y1+y2)/2 - .5*radius);
-		//drawLine((x1+x2)/2 + .5*radius, (y1+y2)/2 + .5*radius, x2, y2);
-		
 	}
 	
 	

@@ -16,9 +16,18 @@ public class Flower {
 	 * @param count depth of the recursion, initial call passes 0
 	 */
 	private static void flower(Color[] palette, double x, double y, double halfWidth, double halfHeight, int count){
-		//
-		// FIXME Your code below here
-		//
+		if (count == 4) {
+			return;
+		}
+		int i = (int)(palette.length * Math.random());
+		StdDraw.setPenColor(palette[i]);
+		StdDraw.filledEllipse(x, y, halfWidth, halfHeight);
+		flower(palette, x, y, halfWidth/2, halfHeight/2, count+1);
+		flower(palette, x-.5*halfWidth, y, halfWidth/2, halfHeight/2, count+1);
+		flower(palette, x+.5*halfWidth, y, halfWidth/2, halfHeight/2, count+1);
+		flower(palette, x, y+.5*halfHeight, halfWidth/2, halfHeight/2, count+1);
+		flower(palette, x, y-.5*halfHeight, halfWidth/2, halfHeight/2, count+1);
+		
 	}
 	
 		
