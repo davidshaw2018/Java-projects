@@ -71,6 +71,7 @@ public class Watermelons {
 				ans[2] = 0;
 			}
 		}
+		Arrays.sort(ans);
 		return ans;
 	}
 

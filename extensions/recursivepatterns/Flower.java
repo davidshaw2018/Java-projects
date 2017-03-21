@@ -16,7 +16,7 @@ public class Flower {
 	 * @param count depth of the recursion, initial call passes 0
 	 */
 	private static void flower(Color[] palette, double x, double y, double halfWidth, double halfHeight, int count){
-		if (count == 4) {
+		if (count == 6) {
 			return;
 		}
 		int i = (int)(palette.length * Math.random());
