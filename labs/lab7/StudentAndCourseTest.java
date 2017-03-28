@@ -161,7 +161,6 @@ public class StudentAndCourseTest extends TestCase {
 				Student s2 = new Student(aa, b, cc);
 				boolean added = c.addStudent(s2);
 				assertTrue("addStudent not working properly", added);
-
 				assertEquals("seats not updated after adding a student", s - j - 1, c.getRemainingSeats());
 			}
 
