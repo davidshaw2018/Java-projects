@@ -6,6 +6,7 @@ import java.util.LinkedList;
 public class Polynomial {
 
 	final private LinkedList<Double> list;
+	private Object String;
 
 	/**
 	 * Constructs a Polynomial with no terms yet.
@@ -14,30 +15,96 @@ public class Polynomial {
 		//
 		// Set the instance variable (list) to be a new linked list of Double type
 		//
-		list = null;   // FIXME
+
+		list = new LinkedList<Double>();  
 	}
 
 	public String toString() {
-		return "A polynomial"; // FIXME
+		String ans = "";
+		if (list.size() == 0) {
+			return "0";
+		}
+		else ans = list.get(0) + "";
+		for (int i = 1; i < list.size() - 1; ++i) {
+			if (list.get(i) < 0) {
+				ans += " " + list.get(i) + "x^" + i;
+			}
+			if (list.get(i) > 0) {
+				ans += " + " + list.get(i) + "x^" + i;
+			}
+		}
+		if (list.get(list.size()-1) < 0) {
+			ans += " - " + list.get(list.size() - 1) + "x^" + (list.size() - 1);
+		}
+		if (list.get(list.size()-1) > 0) {
+			ans += " + " + list.get(list.size() - 1) + "x^" + (list.size() - 1);
+		}
+		return ans; 
 	}
-
+/**
+ * 
+ * @param coefficient of next highest order term
+ * @return new term with coefficient
+ */
 	public Polynomial addTerm(double coeff) {
-		//
-		// FIXME
-		//
+		list.add(coeff);
 		return this;  // required by lab spec
 	}
 
 	public double evaluate(double x) {
-		return Math.random();  // FIXME
+		return helper(x,0);
 	}
-	
+/**
+ * 
+ * @param value of x
+ * @param list position
+ * @return recursive method of list(i) + x*next value
+ */
+	public double helper(double x, int listPosition) {
+		if (listPosition >= list.size()) {
+			return 0;
+		}
+		else return list.get(listPosition) + x*helper(x,listPosition+1);	
+	}
+/**
+ * 
+ * @return derivative of the polynomial
+ */
 	public Polynomial derivative() {
-		return null;   // FIXME
+		Polynomial ans = new Polynomial();
+		for (int i = 0; i < list.size()-1; ++i) {
+			ans.addTerm((i+1)*list.get(i+1));
+		}
+		return ans;
 	}
-	
+/**
+ * 
+ * @param another polynomial
+ * @return sum of two polynomial coefficients
+ */
 	public Polynomial sum(Polynomial another) {
-		return null;   // FIXME
+		Polynomial ans = new Polynomial();
+		int size = 0;
+		boolean thisLonger = false;
+		if (this.list.size() > another.list.size()) {
+			size = another.list.size();
+			thisLonger = true;
+		}
+		else size = this.list.size();
+		for (int i = 0; i < size; ++i) {
+			ans.list.add(i, list.get(i) + another.list.get(i));
+		}
+		if (thisLonger) {
+			for (int i = size; i < this.list.size(); ++i) {
+				ans.list.add(i,this.list.get(i));
+			}
+		}
+		else {
+			for (int i = size; i < another.list.size(); ++i) {
+				ans.list.add(i,another.list.get(i));
+			}
+		}
+		return ans;   
 	}
 
 	/**
@@ -89,5 +156,15 @@ public class Polynomial {
 
 		return this.list.equals(other.list);
 	}
+
+	public static void main (String[] args) {
+		Polynomial a = new Polynomial();
+		a.addTerm(-2).addTerm(-4).addTerm(2);
+		System.out.println(a);
+		Polynomial b = new Polynomial();
+		b.addTerm(4).addTerm(3);
+		System.out.println(a.sum(b));
+	}
+
 
 }

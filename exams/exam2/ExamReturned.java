@@ -1,4 +1,4 @@
-package david_shawexam2;
+package exam2;
 
 import java.awt.Color;
 
