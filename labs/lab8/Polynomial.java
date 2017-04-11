@@ -46,8 +46,8 @@ public class Polynomial {
  * @param coefficient of next highest order term
  * @return new term with coefficient
  */
-	public Polynomial addTerm(double coeff) {
-		list.add(coeff);
+	public Polynomial addTerm(double coef) {
+		list.add(coef);
 		return this;  // required by lab spec
 	}
 

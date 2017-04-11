@@ -27,7 +27,12 @@ public class ListItem {
 	 * @return
 	 */
 	public ListItem duplicate() {
-		return null; // FIXME
+		if (this.next == null) {
+			return new ListItem(this.number, null);
+		}
+		else {
+			return new ListItem(this.number, this.next.duplicate());
+		}
 	}
 
 	/**
@@ -37,7 +42,12 @@ public class ListItem {
 	 * @return
 	 */
 	public int length() {
-		return 0; // FIXME
+		if (this.next == null) {
+			return 1;
+		}
+		else {
+			return 1 + this.next.length();
+		}
 	}
 
 	/**
@@ -50,7 +60,15 @@ public class ListItem {
 	 */
 
 	public ListItem stretch(int n) {
-		return null;  // FIXME
+		ListItem ans = new ListItem(this.number, this.next);
+		ListItem head = ans;
+		for (ListItem p = this; p != null; p=p.next) {
+			for (int i = 0; i < n; ++i) {
+				ans.next = new ListItem(p.number, p.next);
+				ans = ans.next;
+			}
+		}
+		return head.next;
 	}
 
 	/**
@@ -63,19 +81,35 @@ public class ListItem {
 	 */
 
 	public ListItem find(int n) {
-		return null;  // FIXME
+		if (this.number == n) {
+			return this;
+		}
+		else {
+			if (this.next == null) {
+				return null;
+			}
+			else {
+				return this.next.find(n);
+			}
+		}
 	}
 
 	/**
 	 * Return the maximum number contained in the list
 	 * from this point forward.  No lists should be modified
-	 * as a result of this call.  You may do this method recursively
+	 * as a result of this call. You may do this method recursively
 	 * or iteratively,as you like.
 	 * @return
 	 */
 
 	public int max() {
-		return 0; // FIXME
+		int ans = this.number;
+		for (ListItem p = this; p != null; p=p.next) {
+			if (p.number > ans) {
+				ans = p.number;
+			}
+		}
+		return ans;
 	}
 
 	/**
@@ -85,7 +119,15 @@ public class ListItem {
 	 * @return
 	 */
 	public static ListItem evenElements(ListItem ls) {
-		return null;  // FIXME
+		ListItem ans = new ListItem(0,null);
+		ListItem head = ans;
+		for (ListItem p = ls; p != null; p=p.next) {
+			if (p.number%2 == 0) {
+				ans.next = new ListItem(p.number,null);
+				ans = ans.next;
+			}
+		}
+		return head.next;
 	}	
 
 
@@ -100,6 +142,13 @@ public class ListItem {
 			return ("" + number);
 		else
 			return (number + " " + next); // calls next.toString() implicitly
+	}
+	
+	public static void main(String args[]) {
+		ListItem ans = new ListItem(3,
+							new ListItem(4,
+									new ListItem(5,null)));
+		System.out.println(evenElements(ans));
 	}
 
 }
