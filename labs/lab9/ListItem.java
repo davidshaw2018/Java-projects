@@ -147,8 +147,9 @@ public class ListItem {
 	public static void main(String args[]) {
 		ListItem ans = new ListItem(3,
 							new ListItem(4,
-									new ListItem(5,null)));
-		System.out.println(evenElements(ans));
+									new ListItem(5,
+											new ListItem(6,null))));
+		System.out.println(ans);
 	}
 
 }

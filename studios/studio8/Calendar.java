@@ -44,7 +44,7 @@ public class Calendar {
 		Date b = new Date(4,1,2017);
 		Time x = new Time(1,30,false);
 		Time y = new Time(2,30,true);
-		LinkedList<Appointments> empty = new LinkedList<Appointments>
+		LinkedList<Appointment> empty = new LinkedList<Appointment>();
 		Appointment first = new Appointment(a,x);
 		Appointment second = new Appointment(b,y);
 		Calendar cal = new Calendar("Doctor Ross",null);

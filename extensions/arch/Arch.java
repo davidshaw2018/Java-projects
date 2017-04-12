@@ -1,5 +1,6 @@
 package arch;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedList;
@@ -37,7 +38,14 @@ public class Arch implements ActionListener {
          * between each adjacent pair of masses.
          */
 
-		// FIXME
+		int separation = this.CANVAS_WIDTH / (numMasses - 1);
+		
+		for (int i = 0; i <= this.CANVAS_WIDTH; i += separation) {
+			StdDraw.setPenColor(Color.black);
+			StdDraw.filledSquare(i, this.CANVAS_HEIGHT, (double)separation/5);
+			StdDraw.setPenColor(Color.red);
+			StdDraw.line(i, 1, i + separation, 1);
+		}
 	}
 
 	/**
