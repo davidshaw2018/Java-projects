@@ -7,8 +7,11 @@ public class Fibonacci {
 	 * @param n
 	 * @return fib(n), computed recursively
 	 */
-	public static int recursive(int n) {
-		return 0; // FIXME
+	public static int fib(int n) {
+		if (n > 1) {
+			return fib(n-1) + fib(n-2);
+		}
+		else return n;
 	}
 	
 	/**
@@ -17,7 +20,8 @@ public class Fibonacci {
 	 * @return fib(n), computed iteratively
 	 */
 	public static int iterative(int n) {
-		return 0; // FIXME
+		int ans = 0;
+		for ()
 	}
 
 }

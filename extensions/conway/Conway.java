@@ -6,17 +6,30 @@ package conway;
  */
 public class Conway {
 
+	private final int rows;
+	private final int cols;
+	private boolean[][] live;
+
 
 	public Conway(int rows, int cols){
+		this.rows = rows;
+		this.cols = cols;
+		live = new boolean[this.rows][this.cols];
 	}
 
-
+	/**
+	 * 
+	 * @return rows in the game
+	 */
 	public int getRows(){
-		return 0;             // FIXME
+		return this.rows;             // FIXME
 	}
-
+	/**
+	 * 
+	 * @return columns in the game
+	 */
 	public int getColumns(){
-		return 0;             // FIXME
+		return this.cols;             // FIXME
 	}
 
 	/**
@@ -26,7 +39,7 @@ public class Conway {
 	 * @param col
 	 */
 	public void setLiveness(boolean b, int row, int col){
-		// FIXME
+		this.live[row][col] = b;
 	}
 
 
@@ -38,7 +51,14 @@ public class Conway {
 	 *    If row or col is out of bounds, you must return false.
 	 */
 	public boolean isAlive(int row, int col){
-		return false;   // FIXME
+		if (row >= this.rows || row < 0 || col >= this.cols || col < 0) {
+			return false;
+		}
+		else {
+			return this.live[row][col];
+		}
+
+
 	}
 
 
@@ -46,7 +66,11 @@ public class Conway {
 	 * Make every cell not alive
 	 */
 	public void clear(){
-		// FIXME
+		for (int i = 0; i < this.rows; ++i) {
+			for (int j = 0; j < this.cols; ++j) {
+				this.live[i][j] = false;
+			}
+		}
 	}
 
 
@@ -68,7 +92,36 @@ public class Conway {
 	 * @return the number of living neighbors
 	 */
 	public int countLivingNeighbors(int row, int col){
-		return 0;    // FIXME
+		int rowStart = row-1; 
+		int rowEnd = row+1;
+		int colStart = col-1;
+		int colEnd = col+1;
+		int ans = 0;
+		if (row == 0) {
+			rowStart = row;
+		}
+		if (row == this.rows) {
+			rowEnd = row;
+		}
+		if (col == 0) {
+			colStart = col;
+		}
+		if (col == this.cols) {
+			colEnd = col;
+		}
+		for (int i = rowStart; i <= rowEnd; ++i) {
+			for (int j = colStart; j <= colEnd; ++j) {
+				if (i == row && j == col) {
+					if (this.isAlive(row, col)) {
+						ans -= 1;
+					}
+				}
+				if (this.isAlive(i,j)) {
+					ans += 1;
+				}
+			}
+		}
+		return ans;
 	}
 
 	/**
@@ -78,7 +131,28 @@ public class Conway {
 	 * 
 	 */
 	public void step(){
-		// FIXME
+		int[][] nAlive = new int[this.rows][this.cols];
+		Conway next = new Conway(this.rows, this.cols);
+		for (int i = 0; i < this.rows; ++i) {
+			for (int j = 0; j < this.cols; ++j) {
+				nAlive[i][j] = this.countLivingNeighbors(i, j);
+			}
+		}
+		for (int i = 0; i < this.rows; ++i) {
+			for (int j = 0; j < this.cols; ++j) {
+				if (!this.isAlive(i, j) && nAlive[i][j] == 3) {
+					next.setLiveness(true, i, j);
+				}
+				else {
+					if (nAlive[i][j] > 3 || nAlive[i][j] < 2) {
+						next.setLiveness(false, i, j);
+					}
+					else {
+						next.setLiveness(true, i, j);
+					}
+				}
+			}
+		}
 	}
 
 	/**
