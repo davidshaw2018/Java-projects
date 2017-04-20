@@ -57,8 +57,6 @@ public class Conway {
 		else {
 			return this.live[row][col];
 		}
-
-
 	}
 
 
@@ -131,26 +129,25 @@ public class Conway {
 	 * 
 	 */
 	public void step(){
-		int[][] nAlive = new int[this.rows][this.cols];
 		Conway next = new Conway(this.rows, this.cols);
 		for (int i = 0; i < this.rows; ++i) {
 			for (int j = 0; j < this.cols; ++j) {
-				nAlive[i][j] = this.countLivingNeighbors(i, j);
+				if (!this.isAlive(i, j)) {
+					if (this.countLivingNeighbors(i, j) == 3) {
+						next.setLiveness(true, i, j);
+					}
+				}
+				else {
+					if (this.countLivingNeighbors(i, j) == 2 || this.countLivingNeighbors(i, j) == 3) {
+						next.setLiveness(true, i, j);
+					}
+				}
+
 			}
 		}
 		for (int i = 0; i < this.rows; ++i) {
 			for (int j = 0; j < this.cols; ++j) {
-				if (!this.isAlive(i, j) && nAlive[i][j] == 3) {
-					next.setLiveness(true, i, j);
-				}
-				else {
-					if (nAlive[i][j] > 3 || nAlive[i][j] < 2) {
-						next.setLiveness(false, i, j);
-					}
-					else {
-						next.setLiveness(true, i, j);
-					}
-				}
+				this.setLiveness(next.isAlive(i, j), i,j);
 			}
 		}
 	}
@@ -262,7 +259,20 @@ public class Conway {
 
 
 	public void logAndCapture() {
+		System.out.println("Beginning of log and capture:\n");
+		for (int i = 0; i < this.rows; ++i) {
+			for (int j = 0; j < this.cols; ++j) {
+				if (this.isAlive(i, j)) {
+					System.out.println("setLiveness(true," + i + "," + j + ");");
+				}
+			}
+		}
+		System.out.println("\nEnd of log and capture\n");
+	}
 
+	public static void main(String[] args) {
+		Conway it = new Conway(10,10);
+		
 	}
 
 }

@@ -2,9 +2,9 @@ package matrix;
 
 
 public class Matrix {
-	
+
 	private double[][] values;
-		
+
 	/**
 	 * The Matrix is based on the supplied two-dimensional array of values.
 	 * Be sure to make your own copy of the values, so that changes to the
@@ -12,23 +12,27 @@ public class Matrix {
 	 * @param values
 	 */
 	public Matrix(double[][] in) {
-		values = null;  // FIXME -- make a copy of in
-		                //  this is not the same thing as writing:
-		                //  values = in
+		this.values = new double[in.length][in[0].length];
+		for (int i = 0; i < in.length; ++i) {
+			for (int j = 0; j < in[0].length; ++j) {
+				this.values[i][j] = in[i][j];
+			}
+		}
 	}
-	
+
+
 	public double getValue(int row, int col) {
 		return this.values[row][col];  // Do not change this!
 	}
-	
+
 	public int getNumRows() {
 		return values.length;  // Do not change!
 	}
-	
+
 	public int getNumCols() {
 		return values[0].length; // Do not change!
 	}
-	
+
 	/**
 	 * You must complete this method, or the equals(Object) test will always
 	 *   return false. 
@@ -41,9 +45,23 @@ public class Matrix {
 	 * @return true iff the arrays have the same shape and contents
 	 */
 	private static boolean arraysAreEqual(double[][] one, double[][] two) {
-		return false; // FIXME
+		boolean ans = true;
+		if (one.length != two.length || one[0].length != two[0].length) {
+			ans = false;
+		}
+		else {
+			for (int i = 0; i < one.length; ++i) {
+				for (int j = 0; j < one[0].length; ++j) {
+					if (one[i][j] != two[i][j]) {
+						ans = false;
+					}
+				}
+			}
+		}
+
+		return ans;
 	}
-	
+
 	/**
 	 * This was generated initially by eclipse, but
 	 *   eclipse does not know how to compare two-dimensional arrays.
@@ -65,11 +83,24 @@ public class Matrix {
 		Matrix other = (Matrix) obj;
 		return arraysAreEqual(this.values, other.values);
 	}
-	
+
 	public Matrix plus(Matrix other) {
-		return null; // FIXME
+		if (other.values.length != values.length || other.values[0].length != values[0].length) {
+			throw new IllegalArgumentException("Matrix must be of the same dimensions");
+		}
+		else {
+			Matrix ans = new Matrix(this.values);
+			for (int i = 0; i < this.values.length; ++i) {
+				for (int j = 0; j < this.values[0].length; ++j) {
+					ans.values[i][j] = this.values[i][j] + other.values[i][j];
+				}
+			}
+			return ans;
+		}
+
+
 	}
-	
+
 	/**
 	 * Returns a **new Matrix** that is the product of this and the other one.
 	 * Does not change this Matrix at all.
@@ -77,16 +108,36 @@ public class Matrix {
 	 * @return
 	 */
 	public Matrix times(Matrix other) {
-		return null; // FIXME
+		if (other.values.length != this.values[0].length) {
+			throw new IllegalArgumentException("These matrices cannot be multiplied");
+		}
+		else {
+			Matrix ans = new Matrix(new double[this.getNumRows()][other.getNumCols()]);
+			for (int i = 0; i < this.getNumRows(); ++i) {
+				for (int j = 0; j < other.getNumCols(); ++j) {
+					for (int k = 0; j < this.getNumCols(); ++k) {
+						ans.values[i][j] += this.values[i][k]*other.values[k][j];
+					}
+				}
+			}
+			return ans;
+		}
 	}
-	
+
 	/**
 	 * Returns a **new Matrix** that is the transpose of this one.
 	 * Does not change this Matrix at all.
 	 * @return
 	 */
 	public Matrix transpose() {
-		return null; // FIXME
+		double[][] ansArray = new double[this.values[0].length][this.values.length];
+		Matrix ans = new Matrix(ansArray);
+		for (int i = 0; i < ans.values.length; ++i) {
+			for (int j = 0; j < ans.values[0].length; ++j) {
+				ans.values[i][j] = this.values[j][i];
+			}
+		}
+		return ans;
 	}
 
 	/**
@@ -95,8 +146,14 @@ public class Matrix {
 	 * @param factor the amount by which to scale each element of row i
 	 */
 	public void scaleRow(int i, double factor) {
-		// FIXME
-		
+		if (i >= this.getNumRows() || i < 0) {
+			throw new IllegalArgumentException("Out of bounds");
+		}
+		else {
+			for (int j = 0; j < values[0].length; ++j) {
+				this.values[i][j] = this.values[i][j] * factor;
+			}
+		}
 	}
 
 	/**
@@ -105,17 +162,28 @@ public class Matrix {
 	 * @param j
 	 */
 	public void addRows(int i, int j) {
-		// FIXME
-		
+		for (int a = 0; a < values[0].length; ++a) {
+			values[j][a] = values[i][a] + values[j][a];
+		}
+
 	}
-	
+
 	/**
 	 * Modifies the Matrix by exchanging row i with row j
 	 * @param i
 	 * @param j
 	 */
 	public void exchangeRows(int i, int j){
-		// FIXME
+		double[] rowI = new double[this.getNumCols()];
+		double[] rowJ = new double[this.getNumCols()];
+		for (int k = 0; k < this.getNumCols(); ++k) {
+			rowI[k] = this.values[i][k];
+			rowJ[k] = this.values[j][k];
+		}
+		for (int k = 0; k < this.getNumCols(); ++k) {
+			this.values[i][k] = rowJ[k];
+			this.values[j][k] = rowI[k];
+		}
 	}
 
 	/**
@@ -138,4 +206,12 @@ public class Matrix {
 		return ans;
 	}
 
+	public static void main(String[] args) {
+		double[][] test = new double[][] {{1, 2, 3},{ 4, 5, 6}};
+		double[][] test2 = new double[][] {{7, 8},{ 9, 10},{11,12}};
+		Matrix m = new Matrix(test);
+		Matrix m2 = new Matrix(test2);
+		m.times(m2);
+		System.out.println(m.toString());
+	}
 }
