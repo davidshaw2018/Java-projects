@@ -5,16 +5,14 @@ import java.awt.Color;
 import sedgewick.StdDraw;
 
 public class Gorilla implements Mechanics{
-	private boolean hit;
 	private final double xlocation;
 	private final double ylocation;
 	private final double size;
 
 	public Gorilla(double xlocation, double ylocation) {
-		this.hit = false;
 		this.xlocation = xlocation;
 		this.ylocation = ylocation;
-		this.size = .02;
+		this.size = 2;
 	}
 	
 	/**

@@ -15,12 +15,14 @@ public class Background implements Mechanics{
 	private double yPos;
 	
 	public Background() {
+		StdDraw.setXscale(0, 100);
+		StdDraw.setYscale(0,100);
 		this.hit = false;
-		this.b1 = new Building(.1);
-		this.b2 = new Building(.3);
-		this.b3 = new Building(.5);
-		this.b4 = new Building(.7);
-		this.b5 = new Building(.9);
+		this.b1 = new Building(10);
+		this.b2 = new Building(30);
+		this.b3 = new Building(50);
+		this.b4 = new Building(70);
+		this.b5 = new Building(90);
 	}
 	/**
 	 * Creates a collision if a banana hits the ground
@@ -29,21 +31,21 @@ public class Background implements Mechanics{
 	public boolean collision(Banana b) {
 		double bx = b.getXPos();
 		double by = b.getYPos();
-		if (bx <= .2) {
+		if (bx <= 20) {
 			this.yPos = b1.getYPos();
 		}
 		else {
-			if (.2 < bx && bx <= .4) {
+			if (20 < bx && bx <= 40) {
 				this.yPos = b2.getYPos();
 			}
-			if (.4 < bx && bx <= .6) {
+			if (40 < bx && bx <= 60) {
 				this.yPos = b3.getYPos();
 			}
-			if (.6 < bx && bx <= .8) {
+			if (60 < bx && bx <= 80) {
 				this.yPos = b4.getYPos();
 			}
 		}
-		if (bx > .8) {
+		if (bx > 80) {
 			this.yPos = b5.getYPos();
 		}
 		if (by+b.getSize() < this.yPos) {
@@ -56,7 +58,7 @@ public class Background implements Mechanics{
 	@Override
 	public void spawn() {
 		StdDraw.setPenColor(Color.CYAN);
-		StdDraw.filledSquare(.5,.5, .5);
+		StdDraw.filledSquare(50,50, 50);
 		b1.spawn();
 		b2.spawn();
 		b3.spawn();

@@ -49,8 +49,7 @@ public class StringTheory {
 	}
 
 	public static void main(String[] args) {
-		String s = "25 *30";
-		
+		String s = "25  + 30";
 		System.out.println(scraper(s));
 	}
 

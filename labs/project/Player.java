@@ -3,26 +3,23 @@ package project;
 public class Player {
 	
 	private Gorilla player;
-	private boolean turn;
+	public boolean turn;
 	private Background b;
 	
-	public Player(Gorilla player, Background b) {
+	public Player(Gorilla player, Background b, boolean turn) {
 		this.player = player;
-		this.turn = true;
+		this.turn = turn;
 		this.b = b;
 	}
+	
 	/**
 	 * Take a turn; if it's P1's turn, launch a banana, otherwise it becomes his turn
 	 */
-	public void takeTurn() {
+	public void takeTurn(Banana b, Gorilla target) {
 		if (this.turn) {
-			Banana b = new Banana();
-			b.launch(this.player, this.b);
-			this.turn = false;
+			b.launch(target, this.b, this.player);
 		}
-		else {
-			this.turn = true;
-		}
+		this.turn = !this.turn;
 	}
 	/**
 	 * 
@@ -33,10 +30,14 @@ public class Player {
 	}
 	/**
 	 * 
-	 * @return P1's gorilla
+	 * @return Player's gorilla
 	 */
 	public Gorilla getGorilla() {
 		return this.player;
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(Math.cos((3.1415926/180)*30));
 	}
 	
 	
