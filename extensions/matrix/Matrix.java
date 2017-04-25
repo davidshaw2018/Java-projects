@@ -115,7 +115,7 @@ public class Matrix {
 			Matrix ans = new Matrix(new double[this.getNumRows()][other.getNumCols()]);
 			for (int i = 0; i < this.getNumRows(); ++i) {
 				for (int j = 0; j < other.getNumCols(); ++j) {
-					for (int k = 0; j < this.getNumCols(); ++k) {
+					for (int k = 0; k < this.getNumCols(); ++k) {
 						ans.values[i][j] += this.values[i][k]*other.values[k][j];
 					}
 				}
@@ -207,11 +207,16 @@ public class Matrix {
 	}
 
 	public static void main(String[] args) {
-		double[][] test = new double[][] {{1, 2, 3},{ 4, 5, 6}};
-		double[][] test2 = new double[][] {{7, 8},{ 9, 10},{11,12}};
-		Matrix m = new Matrix(test);
-		Matrix m2 = new Matrix(test2);
-		m.times(m2);
-		System.out.println(m.toString());
+		double[][] values = new double[][] { 
+			{ 1, 2, 3},
+			{ 4, 5, 6}
+	};
+
+	Matrix m1 = new Matrix(
+			values
+			);
+
+	Matrix mTrans = m1.transpose();
+	System.out.println(m1.getNumCols());
 	}
 }
