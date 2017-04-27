@@ -10,9 +10,9 @@ public class GameController {
 
 	public static void main(String[] args) {
 		ArgsProcessor ap = new ArgsProcessor(args);
-		
-
 		while(true) {
+			StdDraw.clear();
+			boolean p1Win = false;
 			Background b = new Background();
 			Gorilla g1 = new Gorilla(10, b.g1Y() + 2);
 			Gorilla g2 = new Gorilla(90, b.g2Y() + 2);
@@ -23,6 +23,7 @@ public class GameController {
 			b.spawn();
 			g1.spawn();
 			g2.spawn();
+			StdDraw.show();
 			double gravity = ap.nextDouble("What is the gravity?");
 			ban.grav(wind,gravity);
 			StdDraw.text(50, 75, "Wind: " + wind + ", Gravity: " + gravity);
@@ -37,17 +38,19 @@ public class GameController {
 					p2.takeTurn(ban, p1.getGorilla());
 					p1.takeTurn(ban, p2.getGorilla());
 				}
+				if (g2.collision(ban)) {
+					p1Win = true;
+				}
 			}
-//			if (g1.collision(ban)) {
-//				StdDraw.setPenColor(Color.BLACK);
-//				StdDraw.text(50, 85, "Player 2 Wins!");
-//			}
-//			if (g2.collision(ban)) {
-//				StdDraw.setPenColor(Color.BLACK);
-//				StdDraw.text(50, 85, "Player 1 Wins!");
-//			}
-			StdDraw.setPenColor(Color.BLACK);
-			StdDraw.text(50, 85, "Player 1 Wins!");
+			if (!p1Win) {
+				StdDraw.setPenColor(Color.BLACK);
+				StdDraw.text(50, 85, "Player 2 Wins!");
+			}
+			else {
+				StdDraw.setPenColor(Color.BLACK);
+				StdDraw.text(50, 85, "Player 1 Wins!");
+			}
+			StdDraw.show();
 			StdDraw.pause(3000);
 		}
 

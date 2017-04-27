@@ -27,7 +27,7 @@ public class Gorilla implements Mechanics{
 	 */
 	@Override
 	public void spawn() {
-		StdDraw.setPenColor(Color.orange);
+		StdDraw.setPenColor(Color.blue);
 		StdDraw.filledSquare(this.xlocation, this.ylocation, this.size);
 	}
 	/** 
