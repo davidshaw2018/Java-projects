@@ -164,6 +164,7 @@ public class Polynomial {
 		Polynomial b = new Polynomial();
 		b.addTerm(4).addTerm(3);
 		System.out.println(a.sum(b));
+		System.out.println(b.evaluate(3));
 	}
 
 

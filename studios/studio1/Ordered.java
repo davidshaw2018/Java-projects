@@ -20,7 +20,10 @@ public class Ordered {
 		boolean f = d && e;
 		
 		boolean isOrdered = c || f;
-		System.out.println(isOrdered);
+		int abc = 5;
+		double percentage = abc*.03;
+		
+		System.out.println(percentage);
 		
 
 	}

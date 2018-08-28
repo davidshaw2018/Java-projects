@@ -67,7 +67,6 @@ public class GCContent {
 		}
 		else {
 			int numGC = 0;
-
 			for (int i = 0; i < seq.length; ++i) {
 				if (seq[i] == 'G' || seq[i] == 'C') {
 					numGC += 1;

@@ -54,8 +54,8 @@ public class Methods {
 	
 	/**
 	 * 
-	 * @param an array of doubles
-	 * @return average value of the array
+	 * @param An array of doubles to be averaged
+	 * @return	The average of the values in the array
 	 */
 	
 	public static double average(double[] array) {
@@ -80,7 +80,10 @@ public class Methods {
 	 */
 	
 	public static String pig(String s) {
+		
 		return s.substring(1) + s.substring(0, 1) + "ay";
 	}
+	
+	
 
 }
